@@ -1,0 +1,32 @@
+version: '2'
+networks:
+  chitchat:
+services:
+  chitchatclient: 
+    build: chitchatclient 
+    networks:
+      - chitchat
+    depends_on:
+      - psqlservice
+    ports:
+      - 8080:8080
+  psqlservice:
+    restart: always
+    build: createdbsql
+    networks:
+      - chitchat
+    environment:
+      POSTGRES_DB: chitchat
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mxq123
+    volumes:
+      - $PWD/data:/var/lib/postgresql/data
+    ports: 
+      - 5432:5432
+
+
+
+
+
+
+

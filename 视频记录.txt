@@ -1,0 +1,53 @@
+运行：
+docker run -d -p 8020:80 --name mynginx xbf/hello-nginx
+进入：
+docker exec -it mynginx /bin/bash
+
+docker run docker/whalesay cowsay Docker很好玩！
+
+docker tag docker/whalesay mxq/whalesay
+
+docker push mxq123/whalesay （注意这里mxq123是docker用户名)
+
+sudo -i 
+curl -L  https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose
+
+wget https://bootstrap.pypa.io/get-pip.py  --no-check-certificate
+sudo python get-pip.py
+
+sudo pip install docker-compose
+
+vim 卡死 ctrl + q
+
+ssh ip172-18-0-17-bhtlrkb0mkfg0086snd0@direct.labs.play-with-docker.com
+
+docker run --name chitchatpsql -e POSTGRES_PASSWORD=mxq123 -e POSTGRES_USER=postgres -e POSTGRES_DB=chitchat -d postgres -p 5432:5432
+
+docker run -it --rm --link --net XX_default eba33a618025:postgres postgres psql -h postgres -U postgres -d chitchat 
+
+查看docker中postgres的ip
+docker inspect chitchatpsql
+远程连接
+psql -h 172.17.0.2 -U postgres -d chitchat
+
+/var/lib/postgresql/data
+
+
+将本地的卷加载到容器中 -v
+docker run -v $PWD/chitchatdbdata:/var/lib/postgresql/data --name chitchatpsql -e POSTGRES_PASSWORD=mxq123 -e POSTGRES_USER=postgres -e POSTGRES_DB=chitchat -d postgres
+此后数据库中的数据将被清空，注意要重新创建相关数据表
+可以将sql文件拷贝到/docker-entrypoint-initdb.d中,容器会自动创建
+
+docker-compose up -d
+docker-compose stop
+docker-compose rm
+docker-compose build
+
+docker-compose up -d
+http://localhost/ghost/
+
+端口
+docker run -it -p 8080:8080 8c7821c896e4
+
+docker exec -it docker-chitchat_psqlservice_1 psql -U postgres -d chitchat
+

@@ -1,0 +1,20 @@
+{{ define "content" }}
+<p class="lead">
+  <a href="/thread/new">开始一篇新文章</a> 或者 <font color="red">在下面的帖子中进行讨论</font>
+</p>
+
+{{ range . }}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="lead"> <i class="fa fa-comment-o"></i> {{ .Topic }}</span>
+    </div>
+    <div class="panel-body">
+      由 {{ .User.Name }} 于 - {{ .CreatedAtDate }} - 有 {{ .NumReplies }} 帖子.
+      <div class="pull-right">
+        <a href="/thread/read?id={{.Uuid }}">阅读更多</a>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ end }}

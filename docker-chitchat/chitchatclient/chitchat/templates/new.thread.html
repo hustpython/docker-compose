@@ -1,0 +1,13 @@
+{{ define "content" }}
+
+<form role="form" action="/thread/create" method="post">
+  <div class="lead">在此话题下发表你的内容</div>
+  <div class="form-group">
+    <textarea class="form-control" name="topic" id="topic" placeholder="在此填写" rows="4"></textarea>
+    <br/>
+    <br/>
+    <button class="btn btn-lg btn-primary pull-right" type="submit">开始你的表演</button>
+  </div>
+</form>
+
+{{ end }}
